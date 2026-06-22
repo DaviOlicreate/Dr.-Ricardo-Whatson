@@ -31,6 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
+    /* =========================================
+       1.6. Mobile Menu Logic
+       ========================================= */
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+    }
+
     // Remove pulse after 5 seconds regardless of scroll
     setTimeout(() => {
         if (whatsappBtn && whatsappBtn.classList.contains('pulse-animation')) {
