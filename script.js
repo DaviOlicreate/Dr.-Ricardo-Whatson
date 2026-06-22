@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    });
 
     /* =========================================
        4. Modal & Swiper Gallery Logic
