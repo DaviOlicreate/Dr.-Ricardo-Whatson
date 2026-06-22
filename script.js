@@ -146,10 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     clickable: true,
                 },
                 on: {
-                    slideChange: function () {
+                    slideChangeTransitionEnd: function () {
+                        const swiper = this;
                         const videos = modal.querySelectorAll('video');
                         videos.forEach(v => v.pause());
-                        const activeSlide = modal.querySelector('.swiper-slide-active');
+                        const activeSlide = swiper.slides[swiper.activeIndex];
                         if (activeSlide) {
                             const activeVideo = activeSlide.querySelector('video');
                             if (activeVideo) activeVideo.play().catch(e => console.log("Autoplay prevented"));
