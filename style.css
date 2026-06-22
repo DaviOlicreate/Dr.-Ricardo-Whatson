@@ -22,7 +22,7 @@
 
 /* Blur for Blind Gallery */
 .filter-blur {
-    filter: blur(15px);
+    filter: blur(5px);
     transform: scale(1.1); /* Prevents white edges when blurred */
 }
 
