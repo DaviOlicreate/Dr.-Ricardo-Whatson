@@ -73,3 +73,24 @@ html {
 .group:hover .logo-symbol {
     transform: scale(1.05);
 }
+
+/* Custom Swiper Styles */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #bda662 !important;
+}
+
+.swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: #bda662 !important;
+    opacity: 1;
+}
+
+/* Modal Scroll Lock */
+body.modal-open {
+    overflow: hidden;
+}

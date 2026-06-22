@@ -107,4 +107,68 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    });
+
+    /* =========================================
+       4. Modal & Swiper Gallery Logic
+       ========================================= */
+    window.openModal = function(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        
+        document.body.style.overflow = 'hidden';
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+        }, 10);
+
+        const index = modalId.split('-')[1];
+        
+        const lazyMedia = modal.querySelectorAll('[data-src]');
+        lazyMedia.forEach(media => {
+            if (!media.getAttribute('src') && media.getAttribute('data-src')) {
+                media.setAttribute('src', media.getAttribute('data-src'));
+                if(media.tagName === 'VIDEO') {
+                    media.load();
+                }
+            }
+        });
+
+        if (!modal.swiperInstance) {
+            modal.swiperInstance = new Swiper('.swiper-' + index, {
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                on: {
+                    slideChange: function () {
+                        const videos = modal.querySelectorAll('video');
+                        videos.forEach(v => v.pause());
+                    }
+                }
+            });
+        }
+    };
+
+    window.closeModal = function(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        
+        const videos = modal.querySelectorAll('video');
+        videos.forEach(v => v.pause());
+
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    };
 });
