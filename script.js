@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.classList.add('py-3', 'backdrop-blur-md', 'bg-black/40', 'border-b', 'border-white/10', 'shadow-lg');
-            header.classList.remove('py-6', 'bg-gradient-to-b', 'from-black/70', 'to-transparent', 'bg-brand-dark/90');
+            header.classList.add('py-3', 'backdrop-blur-md', 'border-b', 'border-white/5', 'shadow-lg');
+            header.classList.remove('py-6');
         } else {
-            header.classList.remove('py-3', 'backdrop-blur-md', 'bg-black/40', 'border-b', 'border-white/10', 'shadow-lg');
-            header.classList.add('py-6', 'bg-gradient-to-b', 'from-black/70', 'to-transparent');
+            header.classList.remove('py-3', 'backdrop-blur-md', 'border-b', 'border-white/5', 'shadow-lg');
+            header.classList.add('py-6');
         }
     }, { passive: true });
 
