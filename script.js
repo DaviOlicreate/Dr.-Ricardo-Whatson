@@ -1,0 +1,110 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* =========================================
+       1. WhatsApp Button Pulse Control
+       ========================================= */
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    let hasScrolled = false;
+
+    // Remove pulse on scroll
+    const handleScroll = () => {
+        if (!hasScrolled && window.scrollY > 50) {
+            whatsappBtn.classList.remove('pulse-animation');
+            hasScrolled = true;
+            window.removeEventListener('scroll', handleScroll);
+        }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    /* =========================================
+       1.5. Header Glassmorphism on Scroll
+       ========================================= */
+    const header = document.getElementById('main-header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('py-3', 'backdrop-blur-md', 'bg-brand-dark/90', 'border-b', 'border-white/5', 'shadow-lg');
+            header.classList.remove('py-6', 'bg-gradient-to-b', 'from-black/70', 'to-transparent');
+        } else {
+            header.classList.remove('py-3', 'backdrop-blur-md', 'bg-brand-dark/90', 'border-b', 'border-white/5', 'shadow-lg');
+            header.classList.add('py-6', 'bg-gradient-to-b', 'from-black/70', 'to-transparent');
+        }
+    }, { passive: true });
+
+    // Remove pulse after 5 seconds regardless of scroll
+    setTimeout(() => {
+        if (whatsappBtn && whatsappBtn.classList.contains('pulse-animation')) {
+            whatsappBtn.classList.remove('pulse-animation');
+        }
+    }, 5000);
+
+
+    /* =========================================
+       2. Accordion Logic
+       ========================================= */
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+        const icon = item.querySelector('.icon-plus');
+
+        header.addEventListener('click', () => {
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+            // Close all items
+            accordionItems.forEach(otherItem => {
+                const otherHeader = otherItem.querySelector('.accordion-header');
+                const otherContent = otherItem.querySelector('.accordion-content');
+                const otherIcon = otherItem.querySelector('.icon-plus');
+                
+                if (otherHeader !== header) {
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    otherContent.style.maxHeight = '0px';
+                    otherContent.style.paddingTop = '0px';
+                    if (otherIcon) otherIcon.textContent = '+';
+                }
+            });
+
+            // Toggle current item
+            if (!isExpanded) {
+                header.setAttribute('aria-expanded', 'true');
+                content.style.maxHeight = content.scrollHeight + 40 + 'px'; // +40 for padding
+                content.style.paddingTop = '1.5rem';
+                if (icon) icon.textContent = '−';
+            } else {
+                header.setAttribute('aria-expanded', 'false');
+                content.style.maxHeight = '0px';
+                content.style.paddingTop = '0px';
+                if (icon) icon.textContent = '+';
+            }
+        });
+    });
+
+
+    /* =========================================
+       3. Blind Gallery (Meta Ads)
+       ========================================= */
+    const galleryItems = document.querySelectorAll('.blind-gallery-item');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            const overlay = this.querySelector('.overlay-reveal');
+            
+            if (img && img.classList.contains('filter-blur')) {
+                // Remove blur
+                img.classList.remove('filter-blur');
+                img.style.transform = 'scale(1)'; 
+                
+                if (overlay) {
+                    // Hide overlay
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 500);
+                }
+            }
+        });
+    });
+});
