@@ -43,12 +43,12 @@ html = """
                 <!-- Coluna Imagem -->
                 <div class="w-full lg:w-5/12 lg:sticky top-32">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-sm shadow-2xl">
-                        <!-- Caso não haja a imagem drricardo-academic.jpg, uma bela imagem de fallback será mostrada -->
-                        <img src="./drricardo-academic.jpg" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Produção Científica" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent"></div>
+                        <!-- Caso não haja a imagem drricardo-academic.png, uma bela imagem de fallback será mostrada -->
+                        <img src="./drricardo-academic.png" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" alt="Produção Científica" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/60 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-8 w-full">
-                            <h2 class="text-3xl md:text-5xl font-heading mb-4 font-light leading-snug text-white">Produção<br/><span class="text-brand-gold italic">Científica</span></h2>
-                            <p class="text-white/90 font-light text-sm max-w-sm">
+                            <h2 class="text-3xl md:text-5xl font-heading mb-4 font-light leading-snug text-white drop-shadow-lg">Produção<br/><span class="text-brand-gold italic">Científica</span></h2>
+                            <p class="text-white/95 font-medium text-sm max-w-sm drop-shadow-md">
                                 Contribuição ativa para o avanço da cirurgia maxilofacial e odontologia com dezenas de publicações internacionais de alto impacto.
                             </p>
                         </div>
@@ -72,8 +72,8 @@ for category, articles in data.items():
 """
     for article in articles:
         html += f"""
-                            <a href="{article['url']}" target="_blank" rel="noopener noreferrer" class="group/link flex justify-between items-center p-4 bg-white hover:bg-gray-50 border border-gray-100 hover:border-brand-gold/30 rounded-sm transition-all duration-300 shadow-sm">
-                                <span class="font-light pr-4 text-brand-dark group-hover/link:text-brand-gold transition-colors">{article['title']}</span>
+                            <a href="{article['url']}" target="_blank" rel="noopener noreferrer" class="group/link flex justify-between items-center p-4 bg-white hover:bg-gray-100 border border-gray-100 hover:border-brand-gold/50 rounded-sm transition-all duration-300 shadow-sm">
+                                <span class="font-light pr-4 text-brand-dark group-hover/link:text-brand-darker group-hover/link:font-medium transition-all">{article['title']}</span>
                                 <span class="text-brand-gold text-[10px] uppercase tracking-widest whitespace-nowrap flex items-center gap-2 group-hover/link:translate-x-1 transition-transform">
                                     Acessar 
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
