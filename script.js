@@ -149,10 +149,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     slideChange: function () {
                         const videos = modal.querySelectorAll('video');
                         videos.forEach(v => v.pause());
+                        const activeSlide = modal.querySelector('.swiper-slide-active');
+                        if (activeSlide) {
+                            const activeVideo = activeSlide.querySelector('video');
+                            if (activeVideo) activeVideo.play().catch(e => console.log("Autoplay prevented"));
+                        }
                     }
                 }
             });
         }
+        
+        setTimeout(() => {
+            const activeSlide = modal.querySelector('.swiper-slide-active');
+            if (activeSlide) {
+                const activeVideo = activeSlide.querySelector('video');
+                if (activeVideo) activeVideo.play().catch(e => console.log("Autoplay prevented"));
+            }
+        }, 300);
     };
 
     window.closeModal = function(modalId) {
@@ -170,4 +183,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         }, 300);
     };
+
+    // Close Modal on Escape Key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const openModal = document.querySelector('.fixed.inset-0:not(.hidden)');
+            if (openModal) window.closeModal(openModal.id);
+        }
+    });
+
+    // Close Modal on Click Outside
+    document.querySelectorAll('.fixed.inset-0').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            // Check if user clicked exactly on the backdrop (not inside the content)
+            if (e.target === modal) {
+                window.closeModal(modal.id);
+            }
+        });
+    });
 });
