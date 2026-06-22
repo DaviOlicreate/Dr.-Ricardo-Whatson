@@ -137,6 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!modal.swiperInstance) {
             modal.swiperInstance = new Swiper('.swiper-' + index, {
                 loop: true,
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true,
+                },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
