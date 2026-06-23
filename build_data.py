@@ -4,7 +4,7 @@ import urllib.parse
 folders = [
     {'name': 'Rinoplastia', 'dir': 'Rinoplastia Dr. Ricardo Whatson', 'desc': 'Cirurgia estética e funcional do nariz, buscando harmonia facial e melhora respiratória.'},
     {'name': 'Mentoplastia', 'dir': 'Mentoplastia Dr. Ricardo Whatson', 'desc': 'Aperfeiçoamento do contorno do queixo, equilibrando as proporções faciais de forma definitiva.'},
-    {'name': 'Ortognática', 'dir': 'Ortognática Dr. Ricardo Whatson', 'desc': 'Correção de desarmonias ósseas faciais, aliando estética e função mastigatória.'},
+    {'name': 'Ortognática', 'dir': 'Ortognatica Dr. Ricardo Whatson', 'desc': 'Correção de desarmonias ósseas faciais, aliando estética e função mastigatória.'},
     {'name': 'Otoplastia', 'dir': 'Otoplastia Dr. Ricardo Whatson', 'desc': 'Correção de orelhas de abano e outras imperfeições, trazendo simetria e autoconfiança.'},
     {'name': 'Lip Fit', 'dir': 'Lip fit Dr.Ricardo Whatson', 'desc': 'Encurtamento do lábio superior, rejuvenescendo o sorriso e a área perioral.'},
     {'name': 'Lifting Facial', 'dir': 'Liftin Dr. Ricardo Whatson', 'desc': 'Reposicionamento profundo dos tecidos faciais (Deep Plane), combatendo a flacidez com extrema naturalidade.'},
@@ -82,7 +82,7 @@ for index, folder in enumerate(folders):
 
     for file in files:
         ext = os.path.splitext(file)[1].lower()
-        fileUrl = f"./{urllib.parse.quote(folder['dir']).replace('%20', '+')}/{urllib.parse.quote(file).replace('%20', '+')}"
+        fileUrl = f"./{urllib.parse.quote(folder['dir'])}/{urllib.parse.quote(file)}"
         
         if ext in ['.mp4', '.mov']:
             modalsHtml += f"""
