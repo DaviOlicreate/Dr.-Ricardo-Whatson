@@ -87,7 +87,7 @@ for index, folder in enumerate(folders):
         if ext in ['.mp4', '.mov']:
             modalsHtml += f"""
                     <div class="swiper-slide flex items-center justify-center bg-black">
-                        <video class="w-full h-full object-contain lazy-video" controls playsinline loop muted data-src="{fileUrl}">
+                        <video class="w-full h-full object-contain lazy-video" autoplay playsinline loop muted data-src="{fileUrl}">
                         </video>
                     </div>"""
         elif ext in ['.jpg', '.jpeg', '.png', '.webp']:
