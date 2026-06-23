@@ -199,7 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!modal) return;
         
         const videos = modal.querySelectorAll('video');
-        videos.forEach(v => v.pause());
+        videos.forEach(v => {
+            v.pause();
+            v.muted = true; // reset to muted
+        });
+
+        const soundBtn = modal.querySelector('.sound-toggle-btn');
+        if (soundBtn) {
+            const unmuteIcon = soundBtn.querySelector('.unmute-icon');
+            const muteIcon = soundBtn.querySelector('.mute-icon');
+            if (unmuteIcon && muteIcon) {
+                unmuteIcon.classList.add('hidden');
+                muteIcon.classList.remove('hidden');
+            }
+            soundBtn.classList.remove('text-brand-gold');
+            soundBtn.classList.add('text-white');
+        }
 
         modal.classList.remove('opacity-100');
         modal.classList.add('opacity-0');
@@ -227,4 +242,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    window.toggleVideoSound = function(btn) {
+        const modal = btn.closest('.fixed.inset-0');
+        if (!modal) return;
+        
+        const videos = modal.querySelectorAll('video');
+        const unmuteIcon = btn.querySelector('.unmute-icon');
+        const muteIcon = btn.querySelector('.mute-icon');
+        
+        if (!unmuteIcon || !muteIcon) return;
+        
+        const isMuted = unmuteIcon.classList.contains('hidden');
+        
+        if (isMuted) {
+            // We want to UNMUTE
+            videos.forEach(v => { v.muted = false; });
+            muteIcon.classList.add('hidden');
+            unmuteIcon.classList.remove('hidden');
+            btn.classList.add('text-brand-gold');
+            btn.classList.remove('text-white');
+        } else {
+            // We want to MUTE
+            videos.forEach(v => { v.muted = true; });
+            unmuteIcon.classList.add('hidden');
+            muteIcon.classList.remove('hidden');
+            btn.classList.remove('text-brand-gold');
+            btn.classList.add('text-white');
+        }
+    };
 });

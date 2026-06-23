@@ -69,6 +69,11 @@ for index, folder in enumerate(folders):
         <button onclick="closeModal('modal-{index}')" class="absolute top-6 right-6 text-white hover:text-brand-gold z-[60] p-2 transition-colors">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
+        <!-- Sound toggle button -->
+        <button onclick="toggleVideoSound(this)" class="sound-toggle-btn absolute top-6 right-20 text-white hover:text-brand-gold z-[60] p-2 transition-colors" title="Ativar/Desativar Som">
+            <svg class="w-8 h-8 mute-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+            <svg class="w-8 h-8 unmute-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+        </button>
         
         <div class="w-full max-w-5xl h-[90vh] px-4 flex flex-col justify-center relative">
             <div class="text-center mb-4 mt-8">
