@@ -18,15 +18,30 @@ folders.forEach((folder, index) => {
     const dirPath = path.join(__dirname, folder.dir);
     if (!fs.existsSync(dirPath)) return;
 
-    const files = fs.readdirSync(dirPath).filter(f => !f.startsWith('.'));
+    let files = fs.readdirSync(dirPath).filter(f => !f.startsWith('.'));
     
-    let coverFile = files.find(f => f.toLowerCase().endsWith('.jpg') || f.toLowerCase().endsWith('.jpeg') || f.toLowerCase().endsWith('.png'));
+    // Garantir que as fotos do davioliveiraads fiquem primeiro
+    files.sort((a, b) => {
+        const aDavi = a.toLowerCase().includes('davioliveiraads');
+        const bDavi = b.toLowerCase().includes('davioliveiraads');
+        if (aDavi && !bDavi) return -1;
+        if (!aDavi && bDavi) return 1;
+        return a.localeCompare(b);
+    });
+
+    let coverFile = files.find(f => f === 'davioliveiraads_1780950436_highlight18352845991214211.mp4') 
+                    || files.find(f => f.toLowerCase().endsWith('.jpg') || f.toLowerCase().endsWith('.jpeg') || f.toLowerCase().endsWith('.png') || f.toLowerCase().endsWith('.mp4'));
+    
     let coverUrl = coverFile ? `./${encodeURIComponent(folder.dir)}/${encodeURIComponent(coverFile)}` : 'https://placehold.co/800x600/222/C4A052?text=' + encodeURIComponent(folder.name);
+    let isVideoCover = coverFile && coverFile.toLowerCase().endsWith('.mp4');
+    let coverElement = isVideoCover 
+        ? `<video src="${coverUrl}" autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"></video>`
+        : `<img src="${coverUrl}" alt="${folder.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">`;
 
     cardsHtml += `
             <!-- Card ${folder.name} -->
             <div class="relative h-[400px] md:h-[500px] overflow-hidden group cursor-pointer" onclick="openModal('modal-${index}')">
-                <img src="${coverUrl}" alt="${folder.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                ${coverElement}
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-black/80 transition-colors duration-500"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-8 z-10">
                     <h3 class="text-2xl md:text-3xl font-heading text-white mb-3 font-light">${folder.name}</h3>
