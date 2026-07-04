@@ -830,146 +830,149 @@
             
 <style>
 @keyframes scrollLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
 }
 @keyframes scrollRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+.marquee-track-left, .marquee-track-right {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 .marquee-track-left {
-    display: flex;
-    width: max-content;
-    animation: scrollLeft 45s linear infinite;
+    animation: scrollLeft 50s linear infinite;
 }
 .marquee-track-right {
-    display: flex;
-    width: max-content;
-    animation: scrollRight 45s linear infinite;
+    animation: scrollRight 50s linear infinite;
 }
-/* Pause handled via JS to prevent browser keyframe reset bug */
+.marquee-wrapper:hover .marquee-track-left,
+.marquee-wrapper:hover .marquee-track-right {
+    animation-play-state: paused !important;
+}
 </style>
-<div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4"
-     onmouseenter="this.querySelectorAll('.marquee-track-left, .marquee-track-right').forEach(el => el.style.animationPlayState = 'paused')"
-     onmouseleave="this.querySelectorAll('.marquee-track-left, .marquee-track-right').forEach(el => el.style.animationPlayState = 'running')">
+<div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4">
     <!-- Linha 1: Move para esquerda -->
     <div class="marquee-track-left gap-6">
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/1.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/2.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/3.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/4.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/5.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/6.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/7.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/8.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/9.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/1.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/2.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/3.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/4.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/5.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/6.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/7.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/8.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/9.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
     </div>
     
     <!-- Linha 2: Move para direita -->
     <div class="marquee-track-right gap-6">
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/10.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/11.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/12.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/13.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/14.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/15.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/16.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/17.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/18.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/19.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/10.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/11.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/12.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/13.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/14.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/15.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/16.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/17.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/18.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
-        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white/80 backdrop-blur-xl border border-white/90 p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-colors duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:border-brand-gold/50 hover:bg-white/95">
+        <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
             <img src="./feedbacks/19.jpeg" class="w-full h-auto rounded-xl shadow-sm border border-black/5" loading="lazy" alt="Feedback">
         </div>
     </div>
