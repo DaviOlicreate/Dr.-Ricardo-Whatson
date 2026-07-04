@@ -2,13 +2,14 @@ import os
 import urllib.parse
 
 folders = [
+    {'name': 'Blefaroplastia', 'dir': 'Blefaroplastia Dr.Ricardo Whatson', 'desc': 'Remoção do excesso de pele e bolsas de gordura, devolvendo um olhar descansado e vibrante.'},
+    {'name': 'Lifting de sobrancelhas (castanhares)', 'dir': 'Liftin Dr. Ricardo Whatson', 'desc': 'Reposicionamento profundo dos tecidos faciais (Deep Plane), combatendo a flacidez com extrema naturalidade.'},
+    {'name': 'Lip lifting', 'dir': 'Lip fit Dr.Ricardo Whatson', 'desc': 'Encurtamento do lábio superior, rejuvenescendo o sorriso e a área perioral.'},
     {'name': 'Rinoplastia', 'dir': 'Rinoplastia Dr. Ricardo Whatson', 'desc': 'Cirurgia estética e funcional do nariz, buscando harmonia facial e melhora respiratória.'},
+    {'name': 'Otoplastia', 'dir': 'Otoplastia Dr. Ricardo Whatson', 'desc': 'Correção de orelhas de abano e outras imperfeições, trazendo simetria e autoconfiança.'},
     {'name': 'Mentoplastia', 'dir': 'Mentoplastia Dr. Ricardo Whatson', 'desc': 'Aperfeiçoamento do contorno do queixo, equilibrando as proporções faciais de forma definitiva.'},
     {'name': 'Ortognática', 'dir': 'Ortognatica Dr. Ricardo Whatson', 'desc': 'Correção de desarmonias ósseas faciais, aliando estética e função mastigatória.'},
-    {'name': 'Otoplastia', 'dir': 'Otoplastia Dr. Ricardo Whatson', 'desc': 'Correção de orelhas de abano e outras imperfeições, trazendo simetria e autoconfiança.'},
-    {'name': 'Lip Fit', 'dir': 'Lip fit Dr.Ricardo Whatson', 'desc': 'Encurtamento do lábio superior, rejuvenescendo o sorriso e a área perioral.'},
-    {'name': 'Lifting Facial', 'dir': 'Liftin Dr. Ricardo Whatson', 'desc': 'Reposicionamento profundo dos tecidos faciais (Deep Plane), combatendo a flacidez com extrema naturalidade.'},
-    {'name': 'Blefaroplastia', 'dir': 'Blefaroplastia Dr.Ricardo Whatson', 'desc': 'Remoção do excesso de pele e bolsas de gordura, devolvendo um olhar descansado e vibrante.'}
+    {'name': 'Cirurgias combinadas', 'dir': 'Cirurgias combinadas Dr. Ricardo Whatson', 'desc': 'Procedimentos associados para um rejuvenescimento e harmonização facial global.'}
 ]
 
 cardsHtml = ''
@@ -21,20 +22,22 @@ for index, folder in enumerate(folders):
 
     files = [f for f in os.listdir(dirPath) if not f.startswith('.')]
     
-    # Sort files to put davioliveiraads first
+    # Sort files to put davioliveiraads first and specific blefaroplastia cover first
     def sort_key(f):
         is_davi = 'davioliveiraads' in f.lower()
-        return (0 if is_davi else 1, f.lower())
+        is_blef_cover = 'drricardowathson_1759966500_highlight17859691863594989.jpg' in f
+        return (0 if (is_davi or is_blef_cover) else 1, f.lower())
     
     files.sort(key=sort_key)
 
     # find cover file
-    coverFile = next((f for f in files if f == 'davioliveiraads_1780950436_highlight18352845991214211.mp4'), None)
+    coverFile = next((f for f in files if f == 'davioliveiraads_1780950436_highlight18352845991214211.mp4' or f == 'drricardowathson_1759966500_highlight17859691863594989.jpg'), None)
     if not coverFile:
         coverFile = next((f for f in files if f.lower().endswith(('.jpg', '.jpeg', '.png', '.mp4'))), None)
     
     if coverFile:
-        coverUrl = f"./{urllib.parse.quote(folder['dir'])}/{urllib.parse.quote(coverFile)}"
+        fileUrl = f"./{urllib.parse.quote(folder['dir'])}/{urllib.parse.quote(coverFile)}"
+        coverUrl = fileUrl
     else:
         coverUrl = f"https://placehold.co/800x600/222/C4A052?text={urllib.parse.quote(folder['name'])}"
 
