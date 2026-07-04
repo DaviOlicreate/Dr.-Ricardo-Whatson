@@ -26,13 +26,19 @@ for index, folder in enumerate(folders):
     def sort_key(f):
         is_davi = 'davioliveiraads' in f.lower()
         is_capa = f.startswith('capa_')
-        is_blef_cover = 'drricardowathson_1759966500_highlight17859691863594989.jpg' in f
-        return (0 if (is_davi or is_blef_cover or is_capa) else 1, f.lower())
+        is_blef_cover = 'drricardowathson_1767398278_highlight17859691863594989.mp4' in f
+        is_comb_cover = 'drricardowathson_1767477195_highlight18304679395256962.mp4' in f
+        return (0 if (is_davi or is_blef_cover or is_comb_cover or is_capa) else 1, f.lower())
     
     files.sort(key=sort_key)
 
     # find cover file
-    coverFile = next((f for f in files if f.startswith('capa_')), None)
+    coverFile = None
+    if 'Cirurgias combinadas' in folder['name']:
+        coverFile = 'drricardowathson_1767477195_highlight18304679395256962.mp4'
+    elif 'Blefaroplastia' in folder['name']:
+        coverFile = 'drricardowathson_1767398278_highlight17859691863594989.mp4'
+        
     if not coverFile:
         coverFile = next((f for f in files if f == 'davioliveiraads_1780950436_highlight18352845991214211.mp4' or f == 'drricardowathson_1759966500_highlight17859691863594989.jpg'), None)
     if not coverFile:
