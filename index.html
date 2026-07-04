@@ -840,8 +840,8 @@
 .marquee-track-left, .marquee-track-right {
     display: flex;
     width: max-content;
-    will-change: transform;
     transform: translate3d(0, 0, 0);
+    /* removed will-change: transform to fix Safari pause jump bug */
 }
 .marquee-track-left {
     animation: scrollLeft 50s linear infinite;
@@ -849,12 +849,11 @@
 .marquee-track-right {
     animation: scrollRight 50s linear infinite;
 }
-.marquee-wrapper:hover .marquee-track-left,
-.marquee-wrapper:hover .marquee-track-right {
-    animation-play-state: paused !important;
-}
+
 </style>
-<div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4">
+<div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4"
+     onmouseenter="Array.from(this.querySelectorAll('.marquee-track-left, .marquee-track-right')).forEach(el => el.style.setProperty('animation-play-state', 'paused', 'important'))"
+     onmouseleave="Array.from(this.querySelectorAll('.marquee-track-left, .marquee-track-right')).forEach(el => el.style.setProperty('animation-play-state', 'running', 'important'))">
     <!-- Linha 1: Move para esquerda -->
     <div class="marquee-track-left gap-6">
         <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
