@@ -486,9 +486,8 @@
                     <span class="text-brand-gold uppercase text-[10px] tracking-widest">Produção Científica</span>
                     <div class="h-[1px] w-8 bg-brand-gold"></div>
                 </div>
-                <h2 class="text-3xl md:text-5xl font-heading font-light leading-snug max-w-4xl mx-auto">
-                    Autor de capítulos de livros e artigos científicos <br class="hidden md:block"/>
-                    <span class="italic text-brand-gold">em diversas áreas da cirurgia bucomaxilofacial</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-light leading-snug max-w-4xl mx-auto">
+                    Autor de capítulos de livros e artigos científicos em diversas áreas da cirurgia bucomaxilofacial
                 </h2>
             </div>
             <div class="flex flex-col lg:flex-row gap-16 items-start">
@@ -766,7 +765,7 @@
                     </div>
                     
                     <div class="text-sm text-brand-gold hover:text-brand-light transition-colors font-light">
-                        <a href="https://maps.app.goo.gl/sQXxosCFHDZ2nau8A?g_st=ic" target="_blank" rel="noopener noreferrer">📍 Abrir endereço no Google Maps</a>
+                        <a href="https://www.google.com/maps/place/SOS+Clínica+Integrada+Arapiraca+-+AL/@-9.7574996,-36.6594729,17z/data=!3m1!4b1!4m6!3m5!1s0x705d5c443dd9b9b:0xfc88d46705fad62f!8m2!3d-9.7575049!4d-36.656898!16s%2Fg%2F11h18jk4mz?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">📍 Abrir endereço no Google Maps</a>
                     </div>
                 </div>
 
@@ -843,11 +842,12 @@
     width: max-content;
     animation: scrollRight 45s linear infinite;
 }
-.marquee-track-left:hover, .marquee-track-right:hover {
-    animation-play-state: paused;
+.marquee-wrapper:hover .marquee-track-left,
+.marquee-wrapper:hover .marquee-track-right {
+    animation-play-state: paused !important;
 }
 </style>
-<div class="relative w-full overflow-hidden flex flex-col gap-6 py-4">
+<div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4">
     <!-- Linha 1: Move para esquerda -->
     <div class="marquee-track-left gap-6">
         <div class="w-[280px] md:w-[320px] flex-shrink-0">
