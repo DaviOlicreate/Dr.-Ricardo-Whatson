@@ -845,15 +845,15 @@
 }
 .marquee-track-left {
     animation: scrollLeft 50s linear infinite;
+    animation-play-state: paused;
 }
 .marquee-track-right {
     animation: scrollRight 50s linear infinite;
+    animation-play-state: paused;
 }
 
 </style>
-<div class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4"
-     onmouseenter="Array.from(this.querySelectorAll('.marquee-track-left, .marquee-track-right')).forEach(el => el.style.setProperty('animation-play-state', 'paused', 'important'))"
-     onmouseleave="Array.from(this.querySelectorAll('.marquee-track-left, .marquee-track-right')).forEach(el => el.style.setProperty('animation-play-state', 'running', 'important'))">
+<div id="feedbacks-marquee" class="marquee-wrapper relative w-full overflow-hidden flex flex-col gap-6 py-4">
     <!-- Linha 1: Move para esquerda -->
     <div class="marquee-track-left gap-6">
         <div class="w-[280px] md:w-[320px] flex-shrink-0 bg-white border border-gray-200/80 p-4 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.1)] hover:border-brand-gold/50">
@@ -976,6 +976,40 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const marquee = document.getElementById('feedbacks-marquee');
+    if (!marquee) return;
+    
+    const tracks = marquee.querySelectorAll('.marquee-track-left, .marquee-track-right');
+    let isHovering = false;
+    let isIntersecting = false;
+
+    const updatePlayState = () => {
+        const state = (isIntersecting && !isHovering) ? 'running' : 'paused';
+        tracks.forEach(track => track.style.setProperty('animation-play-state', state, 'important'));
+    };
+
+    marquee.addEventListener('mouseenter', () => {
+        isHovering = true;
+        updatePlayState();
+    });
+    marquee.addEventListener('mouseleave', () => {
+        isHovering = false;
+        updatePlayState();
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isIntersecting = entry.isIntersecting;
+            updatePlayState();
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(marquee);
+});
+</script>
     </section>
 
     <!-- Sessão 7: Prova Social & Instagram Feed -->
