@@ -4,6 +4,21 @@
       "source": "/nos-avalie",
       "destination": "https://g.page/r/CdhCnD8TRFiwEBM/review",
       "permanent": false
+    },
+    {
+      "source": "/agendamento",
+      "destination": "/#contato",
+      "permanent": false
+    },
+    {
+      "source": "/agendar",
+      "destination": "/#contato",
+      "permanent": false
+    },
+    {
+      "source": "/contato",
+      "destination": "/#contato",
+      "permanent": false
     }
   ]
 }
